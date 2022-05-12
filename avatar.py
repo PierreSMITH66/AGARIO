@@ -56,10 +56,10 @@ class Avatar:
 
     def manger(self, creep):
         for p in creep:
-            if p.position.distance_to(self.origine) < self.rayon + p.taille:
+            if p.origine.distance_to(self.origine) < self.rayon + p.rayon:
                 if p.vivant:
                     self.score += 10
                     if self.rayon < self.rayonMAX:
                         self.rayon += 0.5
                 p.vivant = False
-            print(p.position)
+

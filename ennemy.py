@@ -16,7 +16,7 @@ class Avatar:
         self.rayonMAX = 150
         self.masse = 10
         self.speed = 10
-        self.origine = Vector2(largeur/2, hauteur/2)
+        self.origine = Vector2(random.randint(0+self.rayon, largeur-self.rayon), random.randint(0+self.rayon, hauteur-self.rayon))
         self.force = Vector2(0, 0)
         self.vitesseMAX = 100
         self.vitesseMIN = 25
@@ -60,7 +60,7 @@ class Avatar:
 
         for p in creep:
             if p.vivant:
-                position = p.position
+                position = p.origine
         x = Vector2(position)
         v = Vector2((x - self.origine))
         u = v.normalize()
@@ -90,15 +90,14 @@ class Avatar:
 
 
     def show(self, screen):
-        if self.vivant:
             pygame.draw.circle(screen, self.couleur,self.origine, self.rayon)
             core.Draw.text((0, 0, 0), self.nom, self.origine)
 
 
     def manger(self, creep):
-        for p in creep:
-            if p.position.distance_to(self.origine) < self.rayon + p.taille:
-                if p.vivant:
-                    if self.rayon < self.rayonMAX:
-                        self.rayon += 0.5
-                p.vivant = False
+            for p in creep:
+                if p.origine.distance_to(self.origine) < self.rayon + p.rayon:
+                    if p.vivant:
+                        if self.rayon < self.rayonMAX:
+                            self.rayon += 0.5
+                    p.vivant = False
