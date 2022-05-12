@@ -31,6 +31,8 @@ def run():
     for c in core.memory("joueur"):
         c.show(core.screen)
         c.manger(core.memory("listcreep"))
+        c.manger(core.memory("ennemy"))
+
         if core.getMouseRightClick():
             c.move()
 

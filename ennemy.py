@@ -21,9 +21,42 @@ class Avatar:
         self.vitesseMAX = 100
         self.vitesseMIN = 25
         self.accMAX = 0.5
+        self.vivant = True
 
 
-    def move(self, creep):
+    def move(self, creep,taille_joueur):
+
+        '''if taille_joueur < self.rayon :
+            for p in creep:
+                if p.vivant:
+                    position = p.position
+            x = Vector2(position)
+            v = Vector2((x - self.origine))
+            u = v.normalize()
+            if self.origine != x:
+                vitesse = self.speed * u
+                self.origine = self.origine + vitesse
+        else:
+            for p in creep:
+                if p.vivant:
+                    position = p.position
+            x = Vector2(position)
+            v = Vector2((x - self.origine))
+            u = v.normalize()
+            if self.origine != x:
+                vitesse = self.speed * u
+                self.origine = self.origine + vitesse
+        if taille_joueur == self.rayon :
+                for p in creep:
+            if p.vivant:
+                position = p.position
+        x = Vector2(position)
+        v = Vector2((x - self.origine))
+        u = v.normalize()
+        if self.origine != x:
+            vitesse = self.speed * u
+            self.origine = self.origine + vitesse'''
+
 
         for p in creep:
             if p.vivant:
@@ -34,6 +67,7 @@ class Avatar:
         if self.origine != x:
             vitesse = self.speed * u
             self.origine = self.origine + vitesse
+
 
 
 
@@ -56,7 +90,7 @@ class Avatar:
 
 
     def show(self, screen):
-
+        if self.vivant:
             pygame.draw.circle(screen, self.couleur,self.origine, self.rayon)
             core.Draw.text((0, 0, 0), self.nom, self.origine)
 
