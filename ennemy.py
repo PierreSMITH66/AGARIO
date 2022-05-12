@@ -26,9 +26,9 @@ class Avatar:
     def move(self, creep):
 
         for p in creep:
-            distance = p.position.distance_to(self.origine)
-            a = distance.normalize()
-        x = Vector2(core.getMouseRightClick())
+            if p.vivant:
+                position = p.position
+        x = Vector2(position)
         v = Vector2((x - self.origine))
         u = v.normalize()
         if self.origine != x:
@@ -65,7 +65,6 @@ class Avatar:
         for p in creep:
             if p.position.distance_to(self.origine) < self.rayon + p.taille:
                 if p.vivant:
-                    self.score += 10
                     if self.rayon < self.rayonMAX:
                         self.rayon += 0.5
                 p.vivant = False

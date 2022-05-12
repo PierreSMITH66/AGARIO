@@ -62,4 +62,4 @@ class Avatar:
                     if self.rayon < self.rayonMAX:
                         self.rayon += 0.5
                 p.vivant = False
-
+            print(p.position)

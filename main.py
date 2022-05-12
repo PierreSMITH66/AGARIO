@@ -6,6 +6,7 @@ import pygame
 from pygame.math import Vector2
 
 import creep
+import ennemy
 import screen
 
 
@@ -16,29 +17,30 @@ def setup():
     core.memory("nbrcreep", 100)
     core.memory("listcreep", [])
     core.memory("joueur",[])
+    core.memory("ennemy", [])
 
     for i in range(0, core.memory("nbrcreep")):
         core.memory("listcreep").append(creep.Creep(core.WINDOW_SIZE[0], core.WINDOW_SIZE[1]))
     core.memory("joueur").append(avatar.Avatar())
-
+    core.memory("ennemy").append(ennemy.Avatar())
     print("Setup END----------------")
 
 
 def run():
     core.cleanScreen()
-    print("listcreep")
     for c in core.memory("joueur"):
         c.show(core.screen)
         c.manger(core.memory("listcreep"))
-
-
         if core.getMouseRightClick():
-            avatar.Avatar.move(c)
+            c.move()
 
     for c in core.memory("listcreep"):
         c.show(core.screen)
-        print(c)
 
+    for c in core.memory("ennemy"):
+        c.show(core.screen)
+        c.manger(core.memory("listcreep"))
+        c.move(core.memory("listcreep"))
 
 
 
