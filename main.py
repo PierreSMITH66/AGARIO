@@ -26,16 +26,18 @@ def setup():
 
 def run():
     core.cleanScreen()
-
+    print("listcreep")
     for c in core.memory("joueur"):
         c.show(core.screen)
         c.manger(core.memory("listcreep"))
+
 
         if core.getMouseRightClick():
             avatar.Avatar.move(c)
 
     for c in core.memory("listcreep"):
         c.show(core.screen)
+        print(c)
 
 
 

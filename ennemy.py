@@ -28,12 +28,31 @@ class Avatar:
         for p in creep:
             distance = p.position.distance_to(self.origine)
             a = distance.normalize()
-        x = Vector2()
+        x = Vector2(core.getMouseRightClick())
         v = Vector2((x - self.origine))
         u = v.normalize()
         if self.origine != x:
             vitesse = self.speed * u
             self.origine = self.origine + vitesse
+
+
+
+
+
+
+
+
+        if self.origine.y + self.rayon > 900:
+            self.origine = Vector2(self.origine.x, 900 - self.rayon)
+
+        if self.origine.y - self.rayon < 0:
+            self.origine = Vector2(self.origine.x, self.rayon)
+
+        if self.origine.x + self.rayon > 1600:
+            self.origine = Vector2(1600 - self.rayon, self.origine.y)
+
+        if self.origine.x - self.rayon < 0:
+            self.origine = Vector2(self.rayon, self.origine.y)
 
 
     def show(self, screen):
