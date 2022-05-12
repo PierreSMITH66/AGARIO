@@ -15,26 +15,30 @@ def setup():
     screen.Screen()
     core.memory("nbrcreep", 100)
     core.memory("listcreep", [])
+    core.memory("joueur",[])
 
     for i in range(0, core.memory("nbrcreep")):
         core.memory("listcreep").append(creep.Creep(core.WINDOW_SIZE[0], core.WINDOW_SIZE[1]))
-
+    core.memory("joueur").append(avatar.Avatar())
 
     print("Setup END----------------")
 
 
-
 def run():
     core.cleanScreen()
-    avatar.show()
+
+    for c in core.memory("joueur"):
+        c.show(core.screen)
+        c.manger(core.memory("listcreep"))
+        if core.getMouseRightClick():
+            avatar.Avatar.move(c)
 
     for c in core.memory("listcreep"):
         c.show(core.screen)
 
 
-    if core.getMouseLeftClick():
-        avatar.move()
-        avatar.show()
+
+
 
 core.main(setup, run)
 
