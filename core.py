@@ -8,7 +8,7 @@ import pygame
 
 import core
 
-title = "Fenetre"
+title = "AGARIO"
 bgColor = (255, 255, 255)
 screenCleen = True
 runfuntion = None

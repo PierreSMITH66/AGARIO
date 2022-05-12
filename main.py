@@ -30,6 +30,7 @@ def run():
     for c in core.memory("joueur"):
         c.show(core.screen)
         c.manger(core.memory("listcreep"))
+
         if core.getMouseRightClick():
             avatar.Avatar.move(c)
 
