@@ -52,9 +52,8 @@ def run():
     for c in core.memory("ennemy"):
         if c.vivant:
             c.show(core.screen)
+            c.move(core.memory("listcreep"), core.memory("joueur"))
             c.manger(core.memory("listcreep"))
-            c.manger(core.memory("joueur"))
-            c.move(core.memory("listcreep"),core.memory("joueur"))
         else:
             c.death()
 
